@@ -152,8 +152,8 @@ const translations = computed(() => {
           )}px) translateY(${Math.round(translations.arrow.y)}px);`"
         >
           <slot name="arrow">
-            <!-- TODO: clip the arrow so that the element behind is clickable -->
             <div
+              role="presentation"
               data-testid="arrow-default"
               class="border-solid"
               :class="[
@@ -167,7 +167,15 @@ const translations = computed(() => {
                 }[props.side]
               ]"
               :style="{
-                'border-width': `${arrowSize}px`
+                'border-width': `${arrowSize}px`,
+                'clip-path': `polygon(${
+                  {
+                    top: '0% 0%, 50% 50%, 100% 0%',
+                    right: '100% 0%, 50% 50%, 100% 100%',
+                    bottom: '0% 100%, 50% 50%, 100% 100%',
+                    left: '0% 0%, 50% 50%, 0% 100%'
+                  }[props.side]
+                });`
               }"
             ></div>
           </slot>
@@ -184,6 +192,7 @@ const translations = computed(() => {
         >
           <slot name="float">
             <div
+              role="tooltip"
               data-testid="tooltip-default"
               class="px-1 py-2 rounded-lg text-sm w-52"
               :class="

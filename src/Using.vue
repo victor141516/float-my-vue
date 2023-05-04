@@ -7,12 +7,7 @@ const log = (e: string) => console.log(e)
 <template>
   <main class="h-screen w-screen flex items-center justify-center bg-slate-800">
     <div class="min-w-[400px] text-center">
-      <FloatMyVue
-        :close-delay="500"
-        :open="true"
-        @open="() => log('open')"
-        @close="() => log('close')"
-      >
+      <FloatMyVue :open="true" @open="() => log('open')" @close="() => log('close')">
         <template #reference>ref</template>
         <template #content>
           <span
