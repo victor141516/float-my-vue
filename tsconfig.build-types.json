@@ -1,0 +1,12 @@
+{
+  "include": [
+    "src/**/*",
+  ],
+  "exclude": [
+    "**/using.*",
+    "node_modules",
+    "**/*.cy.ts",
+    "**/*.spec.ts",
+    "**/__tests__/**/*"
+  ]
+}
