@@ -4,6 +4,7 @@
   ],
   "exclude": [
     "**/using.*",
+    "**/UsingIt.*",
     "node_modules",
     "**/*.cy.ts",
     "**/*.spec.ts",

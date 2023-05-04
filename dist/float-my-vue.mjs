@@ -1,4 +1,4 @@
-import { defineComponent as S, computed as g, ref as h, watch as w, reactive as z, onBeforeUnmount as k, openBlock as v, createElementBlock as p, createElementVNode as y, renderSlot as c, normalizeStyle as b, unref as f, normalizeClass as _, createCommentVNode as m } from "vue";
+import { defineComponent as S, computed as g, ref as h, watch as w, reactive as z, onBeforeUnmount as k, openBlock as p, createElementBlock as v, createElementVNode as y, renderSlot as c, normalizeStyle as b, unref as f, normalizeClass as _, createCommentVNode as m } from "vue";
 const $ = { class: "relative" }, M = {
   key: 0,
   class: "absolute"
@@ -16,68 +16,69 @@ const $ = { class: "relative" }, M = {
     const t = n, r = g(() => {
       const e = Object.assign({ x: 0, y: 0 }, t.offset);
       return (t.side === "top" || t.side === "bottom") && (e.x -= 2), e;
-    }), s = h(!1);
+    }), i = h(!1);
     w(
       () => t.open,
-      (e) => s.value = e,
+      (e) => i.value = e,
       { immediate: !0 }
     );
-    const o = h(null), l = h(null), u = z({ width: 0, height: 0 }), a = z({ width: 0, height: 0 }), i = {};
+    const o = h(null), l = h(null), d = z({ width: 0, height: 0 }), a = z({ width: 0, height: 0 }), s = {};
     w(
       () => o.value,
       () => {
         if (o.value) {
-          if (i.tooltip)
-            return;
           const e = new ResizeObserver(() => {
-            o.value && (u.width = o.value.clientWidth, u.height = o.value.clientHeight);
+            o.value && (d.width = o.value.clientWidth, d.height = o.value.clientHeight);
           });
-          e.observe(o.value), i.tooltip = () => o.value && e.unobserve(o.value);
+          e.observe(o.value), s.tooltip = () => o.value && e.unobserve(o.value);
         } else
-          i.tooltip?.(), i.tooltip = void 0;
+          s.tooltip?.(), s.tooltip = void 0;
       },
       { immediate: !0 }
     ), w(
       () => l.value,
       () => {
-        if (l.value && !i.reference) {
+        if (l.value && !s.reference) {
           const e = new ResizeObserver(() => {
             a.width = l.value.clientWidth, a.height = l.value.clientHeight;
           });
-          e.observe(l.value), i.reference = () => e.unobserve(l.value);
+          e.observe(l.value), s.reference = () => e.unobserve(l.value);
         }
       },
       { immediate: !0 }
     ), k(() => {
-      i.tooltip?.(), i.reference?.();
+      s.tooltip?.(), s.reference?.();
     });
-    const d = g(() => {
+    const u = g(() => {
       const e = {
         arrow: { x: 0, y: 0 },
         tooltip: { x: 0, y: 0 }
       };
-      return t.side === "top" || t.side === "bottom" ? (e.arrow.x = -1 * (t.arrowSize - a.width / 2 + r.value.x), e.arrow.y = -1 * (t.arrowSize + (t.side === "top" ? a.height : 0) + r.value.y), e.tooltip.x = -1 * (u.width / 2 - a.width / 2 + r.value.x), t.side === "top" ? e.tooltip.y = -1 * (a.height + u?.height + t.arrowSize + r.value.y - 1) : e.tooltip.y = -1 * (r.value.y - t.arrowSize)) : (e.arrow.x = -1 * (t.arrowSize - (t.side === "right" ? a.width : 0) + r.value.x), e.arrow.y = -1 * (t.arrowSize + a.height / 2 + r.value.x), t.side === "right" ? e.tooltip.x = -1 * (r.value.x - a.width - t.arrowSize) : e.tooltip.x = -1 * (u.width + t.arrowSize + r.value.x), e.tooltip.y = -1 * (u.height / 2 + a.height / 2 + r.value.x)), e;
+      return t.side === "top" || t.side === "bottom" ? (e.arrow.x = -1 * (t.arrowSize - a.width / 2 + r.value.x), e.arrow.y = -1 * (t.arrowSize + (t.side === "top" ? a.height : 0) + r.value.y), e.tooltip.x = -1 * (d.width / 2 - a.width / 2 + r.value.x), t.side === "top" ? e.tooltip.y = -1 * (a.height + d?.height + t.arrowSize + r.value.y - 1) : e.tooltip.y = -1 * (r.value.y - t.arrowSize)) : (e.arrow.x = -1 * (t.arrowSize - (t.side === "right" ? a.width : 0) + r.value.x), e.arrow.y = -1 * (t.arrowSize + a.height / 2 + r.value.x), t.side === "right" ? e.tooltip.x = -1 * (r.value.x - a.width - t.arrowSize) : e.tooltip.x = -1 * (d.width + t.arrowSize + r.value.x), e.tooltip.y = -1 * (d.height / 2 + a.height / 2 + r.value.x)), e;
     });
-    return (e, x) => (v(), p("div", $, [
+    return (e, x) => (p(), v("div", $, [
       y("div", {
         ref_key: "referenceElementRef",
         ref: l,
         onClick: x[0] || (x[0] = () => {
-          s.value = !s.value, e.$emit(s.value ? "open" : "close");
+          i.value = !i.value, e.$emit(i.value ? "open" : "close");
         })
       }, [
         c(e.$slots, "reference", {}, void 0, !0)
       ], 512),
-      s.value ? (v(), p("div", M, [
-        l.value ? (v(), p("div", {
+      i.value ? (p(), v("div", M, [
+        l.value ? (p(), v("div", {
           key: 0,
+          "data-testid": "arrow-translate",
           class: "absolute h-0 w-0",
           style: b(`transform: translateX(${Math.round(
-            f(d).arrow.x
-          )}px) translateY(${Math.round(f(d).arrow.y)}px);`)
+            f(u).arrow.x
+          )}px) translateY(${Math.round(f(u).arrow.y)}px);`)
         }, [
           c(e.$slots, "arrow", {}, () => [
             y("div", {
+              role: "presentation",
+              "data-testid": "arrow-default",
               class: _(["border-solid", [
                 `border-[${n.arrowSize}px]`,
                 { dark: "border-slate-900", light: "border-gray-300" }[t.color],
@@ -89,22 +90,31 @@ const $ = { class: "relative" }, M = {
                 }[t.side]
               ]]),
               style: b({
-                "border-width": `${n.arrowSize}px`
+                "border-width": `${n.arrowSize}px`,
+                "clip-path": `polygon(${{
+                  top: "0% 0%, 50% 50%, 100% 0%",
+                  right: "100% 0%, 50% 50%, 100% 100%",
+                  bottom: "0% 100%, 50% 50%, 100% 100%",
+                  left: "0% 0%, 50% 50%, 0% 100%"
+                }[t.side]});`
               })
             }, null, 6)
           ], !0)
         ], 4)) : m("", !0),
-        l.value ? (v(), p("div", {
+        l.value ? (p(), v("div", {
           key: 1,
+          "data-testid": "tooltip-translate",
           ref_key: "tooltipRef",
           ref: o,
           class: "absolute",
           style: b(`transform: translateX(${Math.round(
-            f(d).tooltip.x
-          )}px) translateY(${Math.round(f(d).tooltip.y)}px);`)
+            f(u).tooltip.x
+          )}px) translateY(${Math.round(f(u).tooltip.y)}px);`)
         }, [
           c(e.$slots, "float", {}, () => [
             y("div", {
+              role: "tooltip",
+              "data-testid": "tooltip-default",
               class: _([
                 "px-1 py-2 rounded-lg text-sm w-52",
                 { dark: "bg-slate-900 text-white", light: "bg-gray-300 text-slate-900" }[t.color]
@@ -120,10 +130,10 @@ const $ = { class: "relative" }, M = {
 });
 const E = (n, t) => {
   const r = n.__vccOpts || n;
-  for (const [s, o] of t)
-    r[s] = o;
+  for (const [i, o] of t)
+    r[i] = o;
   return r;
-}, V = /* @__PURE__ */ E(O, [["__scopeId", "data-v-76ee325a"]]);
+}, V = /* @__PURE__ */ E(O, [["__scopeId", "data-v-dcbfa26f"]]);
 export {
   V as FloatMyVue
 };
