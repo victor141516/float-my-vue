@@ -4,6 +4,8 @@
 
 Float My Vue is a lightweight and versatile Vue.js library that simplifies the positioning and handling of floating elements such as tooltips, popovers and more.
 
+## [Demo here](https://stackblitz.com/edit/vue-jipvav?file=src/App.vue)
+
 <details>
   <summary>Video example</summary>
   <video loop autoplay width="100" src="https://user-images.githubusercontent.com/5548950/236342380-a775553a-e717-4748-aa85-3528b5e185a2.mov" />
